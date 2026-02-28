@@ -1,73 +1,41 @@
 \documentclass[whitelogo]{TUD-report2020}
-
-\usepackage[style=apa]{biblatex}
+\usepackage[style=apa, backend=biber]{biblatex}
 \addbibresource{report.bib}
-
 \usepackage{changes}
+\usepackage{microtype}\usepackage{csquotes}
+
 \begin{document}
 
-%% Use Roman numerals for the page numbers of the title pages and table of
-%% contents.
 \frontmatter
 
-%% Uncomment following 19 lines for a cover with a picture on the lower half only
-%\title[tudelft-white]{Title}
-%\subtitle[tudelft-cyan]{Optional subtitle}
-%\author[tudelft-white]{J.\ Random Author}
-%\affiliation{Technische Universiteit Delft}
-%\coverimage{cover.jpg}
-%\titleoffsetx{10cm}
-%\titleoffsety{10cm}
-%\afiloffsetx{1cm}
-%\afiloffsety{18cm}
-%\covertext[tudelft-white]{
-%    \textbf{Cover Text} \\
-%    possibly \\
-%    spanning 
-%    multiple 
-%    lines
-%    \vfill
-%    ISBN 000-00-0000-000-0
-%}
-%\makecover
-
-%% Uncomment following 16 lines for a cover with a picture on the lower half only
-\title[tudelft-white]{Title}
-\subtitle[tudelft-black]{Optional subtitle}
-\author[tudelft-white]{J.\ Random Author}
-\affiliation{Technische Universiteit Delft}
-\coverimage{tank.jpg}
+\title[tudelft-white]{AI Ethics in Energy Transitions}
+\subtitle[tudelft-black]{An Empirical Study of OpenSTEF at Alliander}
+\author[tudelft-white]{Anne Beaufort}
+\affiliation{Delft University of Technology}
+\coverimage{cover/cover.jpg}
 \covertext[tudelft-white]{
-    \textbf{Cover Text} \\
-    possibly \\
-    spanning 
-    multiple 
-    lines
+    \textbf{MSc Thesis} \\
+    Complex Systems Engineering \& Management \\
     \vfill
-    ISBN 000-00-0000-000-0
+    Faculty of Technology, Policy and Management
 }
 \setpagecolor{tudelft-cyan}
 \makecover[split]
 
-
-%% Include an optional title page.
 \input{title}
-
 \input{preface}
 
 \tableofcontents
+\listoffigures
+\listoftables
 
-%% Use Arabic numerals for the page numbers of the chapters.
 \mainmatter
 
 \input{chapter-1}
 
-%% Use letters for the chapter numbers of the appendices.
 \appendix
-
 %\input{appendix-a}
 
-\printbibliography
+\printbibliography[heading=bibintoc, title={References}]
 
 \end{document}
-

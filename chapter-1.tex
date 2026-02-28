@@ -1,187 +1,172 @@
 \chapter{Introduction}
+\label{ch:introduction}
 
-This document is intended to be both an example of the TU Delft \LaTeX{} template for reports and theses, as well as a short introduction to its use. It is not intended to be a general introduction to \LaTeX{} itself,\footnote{We recommend \url{http://en.wikibooks.org/wiki/LaTeX} as a reference and a starting point for new users.} and we will assume the reader to be familiar with the basics of creating and compiling documents.
+\section{Energy Transition and the Role of DSOs}
 
-Instructions on how to use this template under Windows and Linux, and which \LaTeX{} packages are required, can be found in \texttt{README.txt}.
+Global concerns surrounding environmental sustainability have prompted international efforts to address climate change. The 2015 Paris Agreement established a legally binding framework to limit global warming \autocite{UNFCCC}. As a party to the agreement, the Netherlands aims for a 55\% reduction in CO\textsubscript{2} emissions relative to 1990 levels by 2030 \autocite{Government2025}. To meet this target, the electricity market aims for renewables to account for 70\% of gross electricity consumption by 2030, with a further commitment to achieving complete greenhouse gas neutrality before 2050 \autocite{Scheepers2022}. This so-called energy transition involves three structural changes: (1) electricity generation at geographically dispersed locations increasing the number of grid connections, actors and transactions; (2) reliance on weather-dependent energy sources amplifies volatility of electricity supply; and (3) a higher electricity demand, creating pressure on available infrastructure \autocite{Raineri2025, Peper2024, Nadel2019}.
 
-\section{Document Structure}
+Together, these changes increase the complexity of the energy system and subsequently of its reliable management by Dutch system operators \autocite{Zahraoui2025}. The function of Distribution System Operators (DSOs) is to distribute centrally controlled electricity flows from the national Transmission System Operator (TenneT) to end-users. Currently, networks are pressured by growing demand and fluctuating renewable injections. When power flows exceed grid capacity, congestion occurs \autocite{Pato2024, Jaskolski2025}. As grid reinforcement is both capital- and time-intensive, mitigation efforts of system operators are focused on leveraging flexibility to alleviate overloads \autocite{Fonteijn2019}. Consequently, while TenneT remains responsible for national net balancing, DSOs are expected to safeguard local grid stability. This transforms DSOs from passive network operators into active system managers \autocite{Zahraoui2025, Warneryd2025}.
 
-Since a report, and especially a thesis, might be a substantial document, it is convenient to break it up into smaller pieces. In this template we therefore give every chapter its own file. The chapters (and appendices) are gathered together in \texttt{report.tex}, which is the master file describing the overall structure of the document. \texttt{report.tex} starts with the line
-\begin{verbatim}
-    \documentclass{tudelft-report}
-\end{verbatim}
-which loads the TU Delft report template. The template is based on the \LaTeX{} \texttt{book} document class and stored in \texttt{tudelft-report.cls}. The document class accepts several comma-separated options. The default language is English, but this can be changed to Dutch (\emph{e.g.}, for bachelor theses) by specifying the \texttt{dutch} option:
-\begin{verbatim}
-    \documentclass[dutch]{tudelft-report}
-\end{verbatim}
-Furthermore, hyperlinks are shown in blue, which is convenient when reader the report on a computer, but can be expensive when printing. They can be turned black with the \texttt{print} option. This will also turn the headers black instead of cyan.
+In response to the more complex decision-making associated with their new role, DSOs are exploring artificial intelligence (AI) deployment to forecast and deviate energy flows \autocite{Ali2020}. Through leveraging the capability of AI models to process large quantities of nonlinear data, net congestion can be more accurately anticipated \autocite{Barja2021}. This highlights the importance of understanding how AI can support DSOs during the energy transition.
 
-If the document becomes large, it is easy to miss warnings about the layout in the \LaTeX{} output. In order to locate problem areas, add the \texttt{draft} option to the \verb|\documentclass| line. This will display a vertical bar in the margins next to the paragraphs that require attention. Finally, the \texttt{nativefonts} option can be used to override the automatic font selection (see below).
+\section{Challenges of AI Integration in DSOs}
 
-This template has the option to automatically generate a cover page with the \verb|\makecover| command. See the next section for a detailed description.
+Barriers have to be overcome before AI will be fully adopted in current energy distribution infrastructures. Integration of AI is complex due to its embeddedness within the energy system, the interdependence between several actors, and the continuous change of its state \autocite{Henao2025, Monaco2024}. This requires a socio-technical approach where the technical system, the institutional context, and social dimensions are well aligned.
 
-The contents of the report are included between the \verb|\begin{document}| and \verb|\end{document}| commands, and split into three parts by
-\begin{enumerate}
-\item\verb|\frontmatter|, which uses Roman numerals for the page numbers and is used for the title page and the table of contents;
-\item\verb|\mainmatter|, which uses Arabic numerals for the page numbers and is the style for the chapters;
-\item\verb|\appendix|, which uses letters for the chapter numbers, starting with `A'.
-\end{enumerate}
-The title page is defined in a separate file, \emph{e.g.}, \texttt{title.tex}, and included verbatim with \verb|\input{title}|.\footnote{Note that it is not necessary to specify the file extension.} Additionally, it is possible to include a preface, containing, for example, the acknowledgements. An example can be found in \texttt{preface.tex}. The table of contents is generated automatically with the \verb|\tableofcontents| command. Chapters are included after \verb|\mainmatter| and appendices after \verb|\appendix|. For example, \verb|input{chapter-1}| includes \texttt{chapter-1.tex}, which contains this introduction.
+A challenge of integrating AI for decision-making is to ensure that the models adhere to ethical principles. The self-learning ability of AI sets it apart, in terms of ethical concerns, from linear data models in several ways. Model complexity and the `black box' nature of advanced AI tools lead to a lack of transparency of its decisions \autocite{Shadi2025}. Datasets often reflect historical biases, so the trained models reproduce or amplify existing social inequalities. When AI systems operate autonomously, these challenges increase \autocite{Voyez2025}. Moral dilemmas could emerge, where an AI system may be forced to choose between two harmful outcomes. In these cases ethical responsibility cannot easily be delegated to an algorithm \autocite{Siebert2022}. Accountability gaps emerge, as responsibility becomes difficult to assign when harm results from algorithmic action rather than direct human choice \autocite{Farokhi2020, Siebert2022}. In high-stakes contexts such as grid operation, these risks have societal consequences. To address these issues, the European Union has adopted the AI Act as a legal framework to regulate high-risk artificial intelligence systems \autocite{Article71EU}.
 
-\subsection{Bibliography}
+For DSOs, swiftly complying with the EU AI Act is challenging. Compliance costs are significant, and the requirements for high-risk AI are stringent \autocite{Heymann2023}. Clear technical standards for implementation and development of AI models are lacking, especially within the energy market \autocite{Jorgensen2025}. In addition, there is a need for institutional alignment and clarity. Although the European Union's AI Act aims to standardize governance for high-risk AI applications, its implementation in the energy sector remains ambiguous \autocite{Heymann2023, Jorgensen2025}. Because of lacking coordination of both the technical and institutional aspects of the system, innovation is hampered which slows the transition from pilot projects to system-wide AI deployment \autocite{Monaco2024}.
 
-Lists of references are handled by \texttt{biblatex}.
-The present document has the following preamble
-\begin{verbatim}
-\usepackage[style=apa]{biblatex}
-\addbibresource{report.bib}
-\end{verbatim}
-The first line tells us that the references will be formatted according 
-to the APA-standards.
-On \texttt{Overleaf} this should adhere to the 7th version of these 
-standards.
-On your own computer the version of biblatex may be older and 
-use the 6th~version.
+\section{Case Study: Alliander and OpenSTEF}
+\label{sec:alliander}
 
-The second line points to a file that contains the references in a database
-like format.
-Use one such line for every database that you want to use.
+The previous section outlined the importance of ethical deployment of AI in electricity distribution networks. To ground the thesis project in a real-life context, this section focuses on Alliander, the largest DSO in the Netherlands.
 
-The general way this works is as follows Using the present document as 
-an example):
-\begin{verbatim}
-xelatex report
-biber report
-xelatex report
-\end{verbatim}
-The first line typesets the document and gathers information for the lists
-of references; the second line will generate lists of references for all 
-chapters, these will be read in during execution of the third and fourth lines.
-Depending on the editor that you use much of this can be done by clicking
-on a suitable icon or by hitting suitably defined hot keys.
+Alliander is a Dutch network company headquartered in Arnhem, consisting of two main business units. Qirion is responsible for installing and maintaining energy infrastructure, while Liander distributes electricity and gas across the grid to their customers \autocite{Alliander2025c}. These are households and businesses in the regions Noord-Holland, Gelderland, Flevoland and Friesland. Alliander is the largest DSO out of six, and has 5.9 million grid connections, 97,000 km of electricity grid, 9,421 employees and a revenue of \texteuro 3.04 billion in 2024 \autocite{AlliaderJaarverslag2025}.
 
-The \texttt{biblatex} package has many options and can be tailored to almost
-every need; you can explore its documentation at
-\texttt{https://www.ctan.org/pkg/biblatex}
+Importantly, DSOs are publicly owned. Alliander's shares are held by provinces and municipalities, such as Gelderland (44.68\%), Friesland (12.65\%), Noord-Holland (9.16\%), and Amsterdam (9.16\%) \autocite{Aandeelhouders2025}. The company's revenues largely come from regulated network tariffs paid by customers. As the energy grid is a natural monopoly and energy an essential public service, it is in the government's best interest to adequately fund and effectively regulate DSOs \autocite{Loreti2024}.
 
-To get numbered references just use
-\begin{verbatim}
-\usepackage{biblatex}
-\addbibresource{report.bib}
-\end{verbatim}
+The main challenge for Alliander is the growing pressure on grid capacity, leading to increasing congestion and a higher risk of outages \autocite{Alliander2025a, BlueGen2025}. In response, Alliander adopted a holistic strategy for increasing the network's effective capacity, referred to as `Capacity Management'. This approach strongly emphasises digitalisation \autocite{Alliander2024}. Because suitable off-the-shelf tools were not available, Alliander relied on agile in-house software development to realise this digital transformation \autocite{Eurelectric2025}. This led to the initiation of several open-source collaboration projects under the Linux Foundation Energy. One of these collaborations, involving RTE, RWTH Aachen and Sigholm, resulted in the development of OpenSTEF \autocite{Eurelectric2025}. This is an automated machine-learning pipeline that combines historical grid data with external predictors such as weather forecasts and market prices to generate short-term forecasts of grid load (up to 48 hours ahead) \autocite{GitHub2025}. OpenSTEF's forecasts are more accurate than those of traditional linear models, especially under the increased variability of modern electricity systems \autocite{LFEnergy2025, Dong2025}.
 
-To give some examples we cite an article: \cite{Einstein1906},
-a book: \cite{MR1039321}, another article: \cite{MR3860876},
-and a book with more than one editor: \cite{MR3204729}.
+In light of their AI integration efforts, especially within grid operations, Alliander must comply with the EU AI Act. As OpenSTEF is used in critical infrastructure management, it falls under the `high risk' category and obtains the strictest regulatory obligations \autocite{Article71EU}. Alliander must prepare for August 2026 when the regulation takes effect. Thus, conducting research on OpenSTEF integration is relevant and time-sensitive.
 
+\section{Research Objective and Question}
+\label{sec:researchquestion}
 
+Summarising the findings in academic literature, ethical AI in grid operation is currently hampered by challenges including a lack of explainable AI (XAI) tools specifically tailored to energy market applications, an absence of domain-specific metrics for evaluating AI performance, insufficient empirical validation of ethical frameworks within large-scale energy systems, fragmented integration of values into AI design and governance, unclear regulatory guidance for energy-specific risks, and a lack of governance approaches bridging technical and socio-technical domains. The recurring research gap across literature is a need for empirically grounded frameworks and tools to operationalise values for AI deployment in energy systems.
 
+The objective of this study is to operationalise ethical values for AI in grid operation. These insights aim to contribute to governance implications for AI regulation, and to support DSOs such as Alliander in preparing for EU AI Act compliance.
 
-\section{Cover and Title Page}
-
-This template will automatically generate a cover page if you issue the \verb|\makecover| command. There are two formats for the cover page: one with a page-filling (`bleeding')
-illustration, with the title(s) and author(s) in large ultrathin typeface, and the other where the illustration fills the lower half of the A4, whereas title(s), author(s) and additional
-text are set in the standard sans-serif font on a plain background with a color chosen by the user. The last option is selected by the optional key \texttt{split}: \verb|\makecover[split]| yields
-a page with the illustration on the lower half. All illustrations are bleeding, in accordance with the TU Delft style.
-
-Before generating the cover, you need to provide the information to put on it. This can be done with the following commands:
-\begin{itemize}
-\item\verb|\title[Optional Color]{Title}| \\
-    This command is used to provide the title of the document. The title
-    title is also printed on the spine. If you use a title page (see below), this information will be used there as well.
-    As the title, subtitle and author name are printed directly over the cover photo, it will often be necessary to adjust the print color in order to have
-    sufficient contrast between the text and the background. The optional color argument is used for this.
-\item\verb|\title[Optional Color]{Subtitle}| \\
-    This command is used to provide a subtitle for the document. If you use a title page (see below), this information will be used there as well.
-    It possible to adjust the print color in order to have
-    sufficient contrast between the text and the background -- the optional color argument is used for this.
-\item\verb|\author{J.\ Random Author}| \\
-    This command specifies the author. The default color is \texttt{tudelft-white}, but this may be adjusted in the same way as the titles.
-\item\verb|\affiliation{Technische Universiteit Delft}| \\
-    The affiliation is the text printed vertically on the front cover. It can be the affiliation, such as the university or department name, or be used for the document type (\emph{e.g.}, Master's thesis). The default color is again \texttt{tudelft-white}, adjustable through the \texttt{color} option.
-\item\verb|\coverimage{cover.jpg}| \\
-    With this command you can specify the filename of the cover image. The image is stretched to fill the full width of the front cover (including the spine if a back cover is present).
-\item\verb|\covertext{Cover Text}| \\
-    If a back cover is present, the cover text is printed on the back. Internally, this text box is created using the \LaTeX{} \texttt{minipage} environment, so it supports line breaks.
-\item\verb|\titleoffsetx{OffsetX},\titleoffsety{OffsetY}|
-    If the cover page contains a page-filling picture (i.e., \texttt{split} is not specified with the \texttt{makecover} command, the best position of the title depends a lot on the picture chosen for it. The lower left corner of the minipage containing title, subtitle and author is 
-    specified by these two commands. The offsets are measured from the top left corner of the page. 
-\item\verb|\afiloffsetx{AfilX\}, \afiloffsety{AfilY}|
-    specifies the lower left corner of the text containing the affiliation, measured from the top left corner of the page. 
-\end{itemize}
-
-In addition to \texttt{[split]}, the \verb|\makecover| command accepts several additional options for customizing the layout of the cover. 
-The most important of these is \texttt{back}. Supplying this option will generate a back cover as well as a front, including the spine. Since this requires a page size slightly larger than twice A4 (to make room for the spine), and \LaTeX{} does not support different page sizes within the same document, it is wise to create a separate file for the cover. \texttt{cover.tex} contains an example. The recommended page size for the full cover can be set with
-\begin{verbatim}
-    \geometry{papersize={1226bp,851bp}}
-\end{verbatim}
-after the document class and before \verb|\begin{document}|.
-
-The other options \verb|\makecover| accepts are
-\begin{itemize}
-\item\texttt{nospine} \\
-    If a back cover is generated, the title will also be printed in a black box on the spine. However, for smaller documents the spine might not be wide enough. Specifying this option disables printing the title on the spine.
-\item\texttt{frontbottom} \\
-    By default the black box on the front is situated above the blue box. Specifying this option will place the black box below the blue one.
-\item\texttt{spinewidth} \\
-    If a back cover is present, this option can be used to set the width of the spine. The default is \texttt{spinewidth=1cm}.
-\item\texttt{frontboxwidth}, \texttt{frontboxheight}, \texttt{backboxwidth}, \texttt{backboxheight} \\
-    As their names suggest, these options are used to set the width and height of the front (black) and back (blue) boxes. The default widths and heights are \texttt{4.375in} and \texttt{2.1875in}, respectively.
-\item\texttt{x}, \texttt{y} \\
-    The blue and black boxes touch each other in a corner. The location of this corner can be set with these options. It is defined with respect to the top left corner of the front cover. The default values are \texttt{x=0.8125in} and \texttt{y=3in}.
-\item\texttt{margin} \\
-    This option sets the margin between the borders of the boxes and their text. The default value is \texttt{12pt}.
-\end{itemize}
-
-For a thesis it is desirable to have a title page within the document, containing information like the thesis committee members. To give you greater flexibility over the layout of this page, it is not generated by a command like \verb|\makecover|, but instead described in the file \texttt{title.tex}. Modify this file according to your needs. The example text is in English, but Dutch translations are provided in the comments. Note that for a thesis, the title page is subject to requirements which differ by faculty. Make sure to check these requirements before printing.
-
-\section{Chapters}
-
-Each chapter has its own file. For example, the \LaTeX{} source of this chapter can be found in \texttt{chapter-1.tex}. A chapter starts with the command
-\begin{verbatim}
-    \chapter{Chapter title}
-\end{verbatim}
-This starts a new page, prints the chapter number and title and adds a link in the table of contents. If the title is very long, it may be desirable to use a shorter version in the page headers and the table of contents. This can be achieved by specifying the short title in brackets:
-\begin{verbatim}
-    \chapter[Short title]{Very long title with many words 
-        which could not possibly fit on one line}
-\end{verbatim}
-Unnumbered chapters, such as the preface, can be created with \verb|\chapter*{Chapter title}|. Such a chapter will not show up in the table of contents or in the page header. To create a table of contents entry anyway, add
-\begin{verbatim}
-    \addcontentsline{toc}{chapter}{Chapter title}
-\end{verbatim}
-after the \verb|\chapter| command. To print the chapter title in the page header, add
-\begin{verbatim}
-    \setheader{Chapter title}
-\end{verbatim}
-
-Chapters are subdivided into sections, subsections, subsubsections, and, optionally, paragraphs and subparagraphs. All can have a title, but only sections and subsections are numbered. As with chapters, the numbering can be turned off by using \verb|\section*{\ldots}| instead of \verb|\section{\ldots}|, and similarly for the subsection.
-\section{\textbackslash section\{\ldots\}}
-\subsection{\textbackslash subsection\{\ldots\}}
-\subsubsection{\textbackslash subsubsection\{\ldots\}}
-\paragraph{\textbackslash paragraph\{\ldots\}}
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-\section{Fonts and Colors}
-
-The fonts used by this template depend on which version of \LaTeX{} you use. Regular \LaTeX, \emph{i.e.}, if you compile your document with with \texttt{latex}, \texttt{pslatex} or \texttt{pdflatex}, will use Utopia for text, Fourier for math and Latin Modern for sans-serif and monospaced text. 
-However, if you want to adhere to the TU Delft house style, you will need to use \XeLaTeX, as it supports TrueType and OpenType fonts. Compiling with \texttt{xelatex} will use Arial for most titles and text, Courier New for monospace and Cambria for math. If you want to haf a sans-serif font for the
-main text, while using \texttt{latex}, \texttt{pslatex} or \texttt{pdflatex}, you can use the option \texttt{noroman} in the report style: 
-\begin{verbatim}
-   \documentclass[...,noroman]{tudelft-report}
-\end{verbatim}
-For document and part titles,  TU Delft Ultra Light is used. For quotes, columns and text in boxes, you use Georgia. If you want to use \XeLaTeX, but do not want to use the TU Delft house style fonts, you can add the \texttt{nativefonts} option to the document class. This will still use  TU Delft Utra Light and Arial on the cover, but not for the body of the document. If you need to use these fonts for certain sections in the main text, they are available via \verb|\tudrmfamily| (Georgia) and \verb|\tudtitlefamily| (TU Delft Utra Light).
+The main research question of this thesis is:
 
 \begin{quote}
-  You have to learn the rules of the game. And then you have to play better than anyone else.\\
-  \emph{Albert Einstein}
+\textit{How can empirical insights into how ethical values emerge in AI-supported grid operations be translated into operational and governance requirements for Distribution System Operators (DSOs)?}
 \end{quote}
 
-The corporate colors of the TU Delft are cyan, black and white, available via 
-{\color{tudelft-cyan}\verb|\color{tudelft-cyan}|}, 
-{\color{tudelft-black}\verb|\color{tudelft-black}|} 
-(which differs slightly from the default 
-{\color{black}\verb|\color{black}|}) 
-and \verb|\color{tudelft-white}|, respectively. 
-Apart from these three, the house style defines the basic colors \texttt{\color{tudelft-sea-green}tudelft-sea-green}, \texttt{\color{tudelft-green}tudelft-green}, \texttt{\color{tudelft-dark-blue}tudelft-dark-blue}, \texttt{\color{tudelft-purple}tudelft-purple}, \texttt{\color{tudelft-turquoise}tudelft-turquoise} and \texttt{\color{tudelft-sky-blue}tudelft-sky-blue}, as well as the accent colors \texttt{\color{tudelft-lavendel}tudelft-lavendel}, \texttt{\color{tudelft-orange}tudelft-orange}, \texttt{\color{tudelft-warm-purple}tudelft-warm-purple}, \texttt{\color{tudelft-fuchsia}tudelft-fuchsia}, \texttt{\color{tudelft-bright-green}tudelft-bright-green} and \texttt{\color{tudelft-yellow}tudelft-yellow}.
+This question is answered through four sub-questions, structured sequentially:
 
+\begin{enumerate}
+    \item What are the socio-technical characteristics influencing decision-making in the formal and informal trajectory of OpenSTEF deployment within Alliander?
+    \item Which value tensions emerge when OpenSTEF is deployed?
+    \item What are the unsafe control actions where transparency and responsibility degrade during AI-supported grid operations?
+    \item How can Design for Values and STPA inform each other to provide a more integrated insight into how values can be operationalised in sociotechnical systems?
+\end{enumerate}
+
+
+\chapter{Literature Review}
+\label{ch:literature}
+
+\section{Literature Search}
+\label{sec:literaturesearch}
+
+A literature search was conducted on the barriers to the ethical implementation of AI within energy systems. The goal was to synthesise and analyse existing articles to identify research gaps \autocite{Wee2016}.
+
+A search string was developed around three bodies of literature: Artificial Intelligence, Energy Systems, and Ethics (Table~\ref{tab:searchstring}). The initial search was conducted in Scopus and Web of Science. The search was restricted to English-language sources and limited to titles and abstracts. An orientation reading was conducted after which a snowballing approach was employed. Specific inclusion criteria were applied during the screening process: the paper is sourced from a reputable publisher, is limited to AI used for enhancing DSO operational practices, and comprehensively addresses risks, ethical challenges, or governance needs associated with integrating AI into decarbonised energy systems.
+
+\begin{table}[h]
+\centering
+\caption{Search string components}
+\label{tab:searchstring}
+\begin{tabular}{lll}
+\hline
+\textbf{Artificial Intelligence} & \textbf{Energy System} & \textbf{Ethics} \\
+\hline
+AI & power system & ethical AI \\
+machine learning & electricity grid & ethical risk \\
+autonomous decision-making & DSO OR system operator & AI governance \\
+digital twin & smart grid & AI regulation \\
+ & congestion & fairness \\
+ & real-time pricing & energy justice \\
+ & load forecasting & responsible AI \\
+ & predictive maintenance & accountability \\
+ & & human-in-the-loop \\
+ & & transparency \\
+ & & values \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Identifying Gaps in the Academic Literature}
+\label{sec:gaps}
+
+Based on an initial synthesis of the literature, three needs emerge for supporting ethical deployment of AI in energy systems: explainable AI tools (XAI), synthetic data generation, and governance and ethical frameworks.
+
+First, a common theme is operationalising trustworthy AI in energy systems. Literature emphasises a need for explainable AI (XAI) tools to support human understanding of model behaviour and output \autocite{Shadi2025, Panagoulias2023, Kobayashi2023}. A frequently cited challenge of advanced AI models is their black-box nature and a subsequent lack of trust in decision-making. Although models that can process large amounts of non-linear data are better at making these decisions accurately, the complexity increase makes the models more difficult to interpret.
+
+A second, more frequently cited theme is how to integrate ethical principles into energy-specific AI regulation. Since ethical principles are often conceptual and abstract, frameworks are needed to translate ethical principles into actionable design requirements and governance frameworks \autocite{ElHaber2024, Noorman2023, Knox2022}. Although several such frameworks have been proposed, most remain conceptual or tested only in small-scale or experimental settings. On the regulatory side, the EU AI Act provides a regulatory foundation but insufficiently addresses energy-specific risks \autocite{Niet2021}.
+
+A third observation is the absence of an integrated socio-technical framework for ethical AI deployment in grid operations. \textcite{Henao2025} highlight the need for a structured framework that bridges technical, procedural and institutional dimensions. Without comprehensively addressing various facets of the socio-technical system surrounding DSOs, existing frameworks offer limited alignment with the complex realities of integrating AI in its operations.
+
+\chapter{Theoretical Framework}
+\label{ch:theory}
+
+This chapter outlines the two main theoretical frameworks used for answering the sub-questions of the thesis project and explains how they are integrated.
+
+\section{Design for Values}
+\label{sec:dfv}
+
+Design for Values (DfV) is used to identify and interpret values as they emerge in practice in AI-supported grid operations and to translate them into context-specific norms and requirements \autocite{vanDePoel2020}.
+
+DfV treats values not as abstract ideals but as concepts that must be specified in context and translated into norms and then into requirements. The values hierarchy (values $\rightarrow$ norms $\rightarrow$ design requirements) \autocite{vanDePoel2013} is used as a translation structure. Norms are defined in the context of this thesis as prescriptions for or restrictions on any kind of action \autocite{vanDePoel2013}. In contrast to values, norms are context-dependent. Norms can be further specified in design requirements, which describe how a certain goal or action, defined as a norm, is attained. In the case of DSOs, such a value hierarchy could be: Responsible Decision Making (as value), Preserving human agency in congestion-related decision-making (as a norm), and requiring a human-in-the-loop for OpenSTEF outputs (as design requirement).
+
+Furthermore, this analysis aims to uncover situations where values come into conflict during AI deployment \autocite{vanDePoel2013}. For DSOs, these tensions are not abstract: they influence real operational decisions, such as balancing congestion management accuracy with the need for explainability of decisions. Identifying these tensions helps clarify why certain ethical risks arise and which organisational or technical trade-offs DSOs must navigate to deploy AI responsibly.
+
+\section{System-Theoretic Process Analysis}
+\label{sec:stpa}
+
+System-Theoretic Process Analysis (STPA) is used to model the operational control structure around OpenSTEF and identify unsafe control actions and system constraints that can prevent unacceptable outcomes \autocite{Dobbe2022, Leveson2011}. STPA is built upon STAMP (System-Theoretic Accident Model and Processes), a theory that extends conventional models of causality to include complex system processes and unsafe interactions among components.
+
+The STPA model is developed iteratively: an initial version based on documents and scoping conversations, then refined using interview findings. Due to scope constraints, causal scenario analysis is conducted for a prioritised subset of unsafe control actions (UCAs) that are most relevant to the values and risks identified empirically.
+
+\section{DfV and STPA Integration}
+\label{sec:integration}
+
+The two frameworks complement each other and are applied in an iterative, empirically grounded manner rather than as two separate exhaustive analyses.
+
+DfV informs STPA by broadening the definition of unacceptable losses beyond technical performance failures — for example, by including accountability erosion, loss of operator agency, and unequal impacts — and by surfacing value tensions that shape hazard prioritisation. STPA informs DfV by translating abstract norms into enforceable constraints tied to concrete control actions and feedback channels, enabling operational and governance requirements.
+
+Integration is operationalised through a traceability chain:
+
+\begin{quote}
+Value $\rightarrow$ Norm $\rightarrow$ Unsafe Control Action $\rightarrow$ Constraint $\rightarrow$ Operational Requirement $\rightarrow$ Governance Requirement
+\end{quote}
+
+Together, the exploration of how these two approaches can work together will form the basis for future work developing a comprehensive `Design for Values in Sociotechnical Systems' methodology.
+
+\chapter{Methodology}
+\label{ch:methodology}
+
+\section{Research Strategy}
+\label{sec:strategy}
+
+As the research question aims to connect ethical principles to real-world, energy-specific deployment, a single case study approach is chosen \autocite{Crowe2011}. This is particularly useful for this research, as AI models are inseparable from the conditions in which they occur, and experimental design within national grid infrastructure is impractical \autocite{Baxter2015}. A qualitative research method was chosen. The primary rationale for this approach is that it is suitable for gaining insights into overarching themes and underlying patterns \autocite{Almeida2017}. This is important in socio-technical systems, as the dynamic interaction of system components cannot easily be captured in quantitative variables alone.
+
+\section{Case Selection}
+\label{sec:case}
+
+The case study focuses on OpenSTEF at Alliander. The system was selected because it: (1) involves AI-supported decision-making in electricity distribution networks; (2) has societal and safety implications if not deployed ethically; and (3) operates within a complex organisational and regulatory environment. A collaboration was set up with Alliander consisting of a 6-month internship and internal supervision.
+
+\section{Research Phases}
+\label{sec:phases}
+
+The methodology consists of three iterative phases.
+
+\subsection{Phase 1 — System Description and Loss Scenario Construction}
+
+The first phase establishes a socio-technical description of OpenSTEF and its operational context. This includes a technical description of the system, an overview of relevant institutional documents and governance frameworks, and a map of relevant stakeholders. Data sources include company reports, governance documents on OpenSTEF deployment, academic literature on DSOs, and grey literature on DSO organisational structure in the Netherlands.
+
+Based on this system understanding and a review of the literature, 3--5 loss scenarios are constructed. These scenarios represent realistic situations in which OpenSTEF use could lead to unacceptable outcomes — technical, organisational, ethical, or governance-related. These scenarios serve as structured input for the interview phase.
+
+\subsection{Phase 2 — Empirical Investigation}
+
+Semi-structured interviews of approximately 90 minutes are conducted with key stakeholders involved in OpenSTEF's development and deployment at Alliander, including AI developers, system operators, AI governance officers, and management. Participants are selected through purposive sampling to ensure coverage of the relevant roles in the OpenSTEF control structure.
+
+The interview structure follows three parts. First, participants are asked about their work practices and their experience with OpenSTEF in operational decision-making. Second, the loss scenarios constructed in Phase 1 are presented and discussed: participants are asked whether each scenario is acceptable, how likely and severe they consider it, who they believe is responsible, and what safeguards should exist. Third, participants are asked broader reflective questions: what other risks concern them, what has already gone wrong or nearly gone wrong, what was most important when implementing OpenSTEF, and what they are proud of having achieved.
+
+Interview data is analysed through inductive coding to identify emergent values, value tensions, and governance concerns. Codes are subsequently mapped deductively onto the DfV value hierarchy and STPA loss and hazard categories.
+
+\subsection{Phase 3 — Integration and Translation}
+
+The third phase translates empirical value insights into operational and governance requirements. The STPA model is refined with empirical findings: losses and hazards are updated, unsafe control actions are prioritised, and causal scenario analysis is conducted for the most critical UCAs. The DfV hierarchy is specified: values are translated into context-specific norms, and norms into design requirements.
+
+Integration is achieved through the traceability chain described in Section~\ref{sec:integration}. The final output is a set of operational requirements for OpenSTEF deployment and governance requirements for DSOs preparing to comply with the EU AI Act.

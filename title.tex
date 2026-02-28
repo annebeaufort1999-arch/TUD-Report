@@ -1,49 +1,52 @@
 \begin{titlepage}
 \begin{center}
 
-%% Thesis title — reduced font size to prevent overflow
+%% Main title — prominent
 {\makeatletter
-\largetitlestyle\fontsize{44}{54}\selectfont\@title
+\largetitlestyle\fontsize{36}{44}\selectfont\@title
 \makeatother}
+
+\bigskip
 
 %% Subtitle
 {\makeatletter
 \ifx\@subtitle\undefined\else
-    \bigskip
-    {\tudsffamily\fontsize{20}{28}\selectfont\@subtitle}
+    {\tudsffamily\fontsize{5}{10}\selectfont\@subtitle}
 \fi
 \makeatother}
 
-\bigskip
-\bigskip
-by
-\bigskip
-\bigskip
+\vfill
 
-%% Author name
+%% Author, programme, faculty
 {\makeatletter
-\largetitlestyle\fontsize{26}{26}\selectfont\@author
+\largetitlestyle\fontsize{20}{26}\selectfont\@author
 \makeatother}
 
-\bigskip
+\medskip
+
+{\tudsffamily\fontsize{13}{18}\selectfont
+    Complex Systems Engineering \& Management \\
+    Faculty of Technology, Policy and Management
+}
+
 \bigskip
 
+{\small
 to obtain the degree of Master of Science \\
 at the Delft University of Technology, \\
 to be defended publicly on Wednesday, 1 July 2026.
+}
 
-\vfill
+\bigskip
 
 \begin{tabular}{lll}
     Student number:   & 5880564 & \\[4pt]
     Project duration: & \multicolumn{2}{l}{January 2026 -- July 2026} \\[4pt]
     Thesis committee: & Dr.\ ir.\ R.\ Dobbe,          & TU Delft, 1st Supervisor \\
                       & Prof.\ dr.\ ir.\ I.\ van de Poel, & TU Delft, 2nd Supervisor \\[4pt]
-    Faculty:          & \multicolumn{2}{l}{Technology, Policy \& Management} \\[4pt]
-    Course:           & \multicolumn{2}{l}{SEN232A Master Thesis Research Design} \\
+    Faculty:          & \multicolumn{2}{l}{Technology, Policy \& Management} \\
 \end{tabular}
 
-\bigskip
 \bigskip
 
 An electronic version of this thesis is available at \url{http://repository.tudelft.nl/}.
